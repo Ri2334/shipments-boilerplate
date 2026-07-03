@@ -6,12 +6,17 @@ const app = express();
 // Middlewares
 app.use(cors());
 app.use(express.json());
-
+const ur = require("./routes/UserRoutes");
+const rr = require("./routes/RateRoutes");
+const cr = require("./routes/ConnectRoutes");
+app.use("/users",ur);
+app.use("/rates",rr);
+app.use("/connect",cr);
 // Health Check Route
 app.get("/", (req, res) => {
-    res.json({
+    res.status(200).json({
         success: true,
-        message: "API is running"
+        message: "Shipment Boilerplate Running"
     });
 });
 
